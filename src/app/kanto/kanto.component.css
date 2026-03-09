@@ -1,0 +1,291 @@
+/* Kanto Pokemon Container */
+.pokemon-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Container Background */
+.pokemon-container {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Container Background Pattern */
+.pokemon-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Heading Styling */
+h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+h2::before {
+  content: '🏙️';
+  margin-right: 10px;
+}
+
+/* Grid Layout */
+.pokemon-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  justify-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card Hover Effects */
+app-pokemon-card {
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+app-pokemon-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Kanto-Specific Card Styling */
+app-pokemon-card {
+  border: 2px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+app-pokemon-card:hover {
+  border-color: #3498db;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .pokemon-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokemon-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
+/* Loading State */
+.pokemon-container.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Empty State */
+.pokemon-container:empty::after {
+  content: 'No Kanto Pokemon found';
+  display: block;
+  text-align: center;
+  padding: 40px;
+  color: #fff;
+  font-size: 18px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Animation for Cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+app-pokemon-card {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Staggered Animation for Cards */
+app-pokemon-card:nth-child(1) { animation-delay: 0.1s; }
+app-pokemon-card:nth-child(2) { animation-delay: 0.2s; }
+app-pokemon-card:nth-child(3) { animation-delay: 0.3s; }
+app-pokemon-card:nth-child(4) { animation-delay: 0.4s; }
+app-pokemon-card:nth-child(5) { animation-delay: 0.5s; }
+app-pokemon-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Type-Specific Borders */
+app-pokemon-card[data-type="fire"] {
+  border: 2px solid #e74c3c;
+}
+
+app-pokemon-card[data-type="water"] {
+  border: 2px solid #3498db;
+}
+
+app-pokemon-card[data-type="grass"] {
+  border: 2px solid #2ecc71;
+}
+
+app-pokemon-card[data-type="electric"] {
+  border: 2px solid #f1c40f;
+}
+
+app-pokemon-card[data-type="psychic"] {
+  border: 2px solid #9b59b6;
+}
+
+app-pokemon-card[data-type="dragon"] {
+  border: 2px solid #34495e;
+}
+
+app-pokemon-card[data-type="normal"] {
+  border: 2px solid #95a5a6;
+}
+
+app-pokemon-card[data-type="flying"] {
+  border: 2px solid #bdc3c7;
+}
+
+app-pokemon-card[data-type="ghost"] {
+  border: 2px solid #8e44ad;
+}
+
+app-pokemon-card[data-type="poison"] {
+  border: 2px solid #9b59b6;
+}
+
+app-pokemon-card[data-type="bug"] {
+  border: 2px solid #f39c12;
+}
+
+app-pokemon-card[data-type="rock"] {
+  border: 2px solid #7f8c8d;
+}
+
+app-pokemon-card[data-type="ground"] {
+  border: 2px solid #d35400;
+}
+
+app-pokemon-card[data-type="fighting"] {
+  border: 2px solid #c0392b;
+}
+
+app-pokemon-card[data-type="fairy"] {
+  border: 2px solid #e91e63;
+}
+
+app-pokemon-card[data-type="steel"] {
+  border: 2px solid #95a5a6;
+}
+
+app-pokemon-card[data-type="dark"] {
+  border: 2px solid #2c3e50;
+}
+
+/* Legendary Pokemon */
+app-pokemon-card[data-legendary] {
+  border: 3px solid #f39c12;
+  animation: legendaryGlow 3s infinite;
+}
+
+@keyframes legendaryGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(243, 156, 18, 0.8);
+  }
+}
+
+/* Starter Pokemon Highlight */
+app-pokemon-card[data-starter] {
+  border: 2px solid #f39c12;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(243, 156, 18, 0.6);
+  }
+}
+
+/* Kanto Region Map Pattern */
+.pokemon-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbar Styling */
+.pokemon-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pokemon-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.pokemon-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.pokemon-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
